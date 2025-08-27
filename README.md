@@ -1,6 +1,6 @@
 # Gemini Custom Slash Commands
 
-This repository contains **custom slash commands** for [Gemini](https://www.gemini.com/) aimed at **Vibe Coding** projects, including Angular, Tailwind v4, accessibility, and more. These commands are designed to **boost productivity, enforce best practices, and prevent common AI hallucinations** in evolving frameworks.  
+This repository contains **custom slash commands** for [Gemini CLI](https://cloud.google.com/gemini/docs/codeassist/gemini-cli) aimed at **Vibe Coding** projects, including Angular, Tailwind v4, accessibility, and more. These commands are designed to **boost productivity, enforce best practices, and prevent common AI hallucinations** in evolving frameworks.  
 
 ---
 
