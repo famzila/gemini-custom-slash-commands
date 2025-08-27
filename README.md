@@ -6,6 +6,7 @@ This repository contains **custom slash commands** for [Gemini](https://www.gemi
 
 ## 📦 Repository Structure
 gemini-custom-slash-commands/
+```
 ├─ commands/ # TOML definitions of custom slash commands
 │ ├─ audit_accessibility.toml
 │ ├─ audit_tailwind_v4.toml
@@ -13,7 +14,7 @@ gemini-custom-slash-commands/
 │ └─ guard_tailwind_v4.toml
 ├─ examples/ # Example usage outputs
 ├─ README.md
-
+```
 
 ---
 
