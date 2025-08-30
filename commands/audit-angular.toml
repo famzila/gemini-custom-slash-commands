@@ -1,0 +1,56 @@
+description = "Audit Angular project for performance, code patterns, best practices, and modern Angular usage (MCP-aligned, doc-verified, modern syntax compliance)."
+
+prompt = """
+You are performing an Angular audit with two main goals:
+- Use Angular CLI MCP output as your base.
+- Cross-check any uncertainties using **official Angular docs** through Brave MCP or Context7.
+
+MODERN BEST PRACTICES (Angular 20+)
+- Do not suggest or allow structural directives: *ngIf, *ngFor, *ngSwitch, NgIf, NgFor, NgSwitch. These are deprecated. Use `@if`, `@for`, `@switch` instead.  
+- Avoid `NgClass` and `NgStyle`. Prefer `[class.*]` and `[style.*]` native property bindings.  
+- Do not import `CommonModule` into standalone components. Import only specific standalone exports you actually need (e.g., `AsyncPipe`, `PercentPipe`, `DecimalPipe`, `NgOptimizedImage`, etc.).  
+- In Angular 19+, `standalone: true` is the default and in Angular 20 it is redundant. Flag any unnecessary `standalone: true` usage in component decorators.  
+- Continue following MCP findings for lint, structure, signals, `ChangeDetectionStrategy`, deferred loading, etc.
+
+AUDIT STEPS
+1) Run Angular CLI MCP best-practices tool.
+2) Parse results and flag:
+   - Any usage of deprecated structural directives.
+   - Any `NgClass` or `NgStyle`.
+   - Any `CommonModule` imports in standalone components.
+   - Any redundant `standalone: true` in Angular 20+.
+3) Investigate templates and highlight areas using new control-flow blocks, style bindings, and granular imports.
+4) Verify with official Angular docs (via Brave/Context7) when unsure.
+
+OUTPUT FORMAT (Markdown)
+
+# Angular Audit Report (MCP-aligned + Modern Syntax Compliance)
+
+##  Code Quality
+- Deprecated `NgIf` usage in `hero.component.html` (use `@if`).
+- `NgClass` used in `menu.component.html` (prefer `[class.*]` binding).
+- `CommonModule` imported in `dashboard.component.ts` (import only required standalone features).
+- `standalone: true` declared in `quote.component.ts` — redundant in Angular 20.
+
+##  Performance & Best Practices
+(MCP-based findings, unchanged)
+
+##  Best Practices & Modern Angular
+- Legacy structural directives must be replaced.
+- Leverage control-flow blocks, signals, OnPush, etc.
+- Remove redundant `standalone: true` to reduce boilerplate.
+
+##  Actionable Improvement Plan
+- [ ] **High** — Replace all `*ngIf`, `*ngFor`, `*ngSwitch` with `@if`, `@for`, `@switch` blocks across templates.
+- [ ] **High** — Remove `NgClass` and replace with `[class.*]` bindings in interactive components.
+- [ ] **High** — Remove `CommonModule` imports from standalone components; import only needed features.
+- [ ] **Medium** — Remove redundant `standalone: true` from all components (Angular 20 default).
+- [ ] **Medium** — Apply signaling migration and performance tweaks as indicated by MCP.
+- [ ] **Low** — Refactor occasional `NgStyle` usages to `[style.*]` bindings.
+- [ ] **Medium** — Remove unused imports in `dashboard.component.ts`: `SomePipe`, `OldDirective`.
+
+RULES
+- Do not provide code examples; only tasks.
+- When docs contradict MCP, label with “Docs override MCP” and reference.
+- Entire output must be valid Markdown, ready for saving as a report.
+"""

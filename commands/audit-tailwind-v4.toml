@@ -1,0 +1,59 @@
+description = "Run a full audit on the project for Tailwind CSS v4 adoption, best practices, and potential v3 remnants."
+prompt = """
+Perform a comprehensive audit of the provided code for Tailwind CSS v4 adoption and best practices.
+The primary goal is to identify any outdated v3 patterns and ensure the project fully leverages v4's new features and CSS-first approach.
+
+## Audit Instructions
+
+1.  **Strictly adhere to Tailwind v4 standards.** Acknowledge that you understand the key differences from v3 before proceeding. These include the new Oxide engine, the removal of the default `tailwind.config.js` file, and the adoption of CSS-first configuration with `@theme`.
+
+2.  Provide a **detailed analysis** of issues found, organized into these categories:
+    *   **CSS-First Configuration (`@theme`)**: This is the most critical check. Verify that theme customizations (colors, spacing, fonts, etc.) are defined inside the `@theme` block in the main CSS file, not in a legacy `tailwind.config.js`.
+    *   **CSS Entry Point**: Verify the use of `@import "tailwindcss";` and check for any deprecated v3 `@tailwind` directives.
+    *   **Utility & Variant Syntax**: Scan for new v4 utilities (e.g., `size-*`) and the correct modern variant syntax (e.g., `group:hover` instead of `group-hover:`).
+    *   **Plugin Imports**: Check that plugins are now imported directly in the CSS file (e.g., `@import "some-plugin";`), not listed in a JS config file.
+    *   **Form Elements Consistency**: Verify that all form elements (`<input>`, `<textarea>`, `<select>`, `<checkbox>`, `<radio>`, etc.) are styled consistently. Check for:
+        - Background color alignment with the theme palette.
+        - Border styles (width, radius, color) consistent across all form elements.
+        - Focus styles (e.g., outline, ring, or border change) that follow accessibility and brand guidelines.
+        - Proper application of utility classes instead of custom CSS overrides, ensuring consistency with Tailwind’s utility-first design.
+        -**Form Elements Consistency**: Verify that all form elements (`<input>`, `<textarea>`, `<select>`, `<checkbox>`, `<radio>`, etc.) are styled consistently. Check for:
+    - Background color alignment with the theme palette.
+    - Border styles (width, radius, color) consistent across all form elements.
+    - Focus styles (e.g., outline, ring, or border change) that follow accessibility and brand guidelines.
+    - Proper application of utility classes instead of custom CSS overrides, ensuring consistency with Tailwind’s utility-first design.
+    - **Plugin usage**: If the project uses `@tailwindcss/forms`, confirm it is included correctly with the `@plugin "tailwindcss/forms";` directive inside the main CSS file.
+    *   **Performance & Maintainability**: Look for overuse of `@apply`, opportunities for component abstraction, and adherence to utility-first principles within the v4 context.
+
+3.  For each issue found, you **must** include:
+    *   **Context**: The file, component, and/or code snippet where the issue is located.
+    *   **Impact**: Why it's an issue (e.g., "This uses the deprecated `tailwind.config.js` method," "Misses v4 performance benefit," "Incorrect v4 syntax").
+    *   **V4 Recommendation**: The correct way to implement it using Tailwind CSS v4's CSS-first approach.
+
+## Tailwind v4 Improvement Plan
+
+After the detailed analysis, create a separate section with this exact title.
+- Summarize each issue into a **short, actionable task** grouped by priority (High / Medium / Low).
+- Format all tasks as a **TODO checklist**.
+- Do not restate the analysis. Only output the tasks.
+
+Example format:
+- [ ] Migrate all theme customizations from the legacy `tailwind.config.js` file to the `@theme` block in the main CSS file. — High
+- [ ] Replace all deprecated `@tailwind` directives with a single `@import "tailwindcss";` statement. — High
+- [ ] Convert all `group-hover:` variants to the new `group:hover` syntax across all components. — Medium
+- [ ] Audit all form inputs and ensure background, border, and focus states match the theme palette. — High
+
+## Knowledge & Tool Requirements
+
+- You **must consult external sources** via Brave MCP, Context7 MCP, or Google Web Search to verify the latest v4 syntax and best practices. Your pre-existing knowledge may be outdated.
+- **Prioritize these official sources**:
+  - Tailwind v4 Alpha Blog Post and official documentation.
+  - Latest upgrade guides from the official Tailwind CSS website.
+- If you find conflicting information, always defer to the official Tailwind CSS website.
+
+## Output Rules
+
+- The entire output must be in **Markdown format** for direct use as a report.
+- The first section is the detailed analysis, and the second is the actionable improvement plan.
+- The improvement plan must be concise and focused solely on implementation tasks.
+"""

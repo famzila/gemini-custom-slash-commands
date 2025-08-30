@@ -1,0 +1,27 @@
+description = "Guardrail: Ensure Tailwind CSS v4 guidance only, prevent v3/v2 hallucinations"
+prompt = """
+Before analyzing or generating Tailwind CSS code/config, enforce these rules:
+
+1. **Trusted Sources**
+   - Always validate classes, configs, and utilities against official Tailwind v4 docs.
+   - When uncertain, you MUST query one of these MCPs:
+     - Brave MCP → for live search of Tailwind v4 docs/articles.
+     - Context7 MCP → for cross-checking authoritative Tailwind v4 content.
+   - Do not provide guidance unless verified by one of these sources.
+
+2. **Deprecation Handling**
+   - Explicitly reject v3/v2 utilities or configs as 'DEPRECATED'.
+   - If something is not in v4 docs, output: "⚠️ Not found in Tailwind v4 documentation".
+
+3. **Environment Check**
+   - Confirm the project setup aligns with v4 (`@tailwindcss/cli`, `@tailwindcss/vite`, CSS-first config).
+   - Flag any legacy PostCSS configs or removed classes.
+
+4. **Output Format**
+   - ✅ Verified Tailwind v4 Features
+   - ⚠️ Deprecated or Suspicious (v3/v2 patterns)
+   - 📚 References (Brave/Context7 links used)
+
+This guard MUST run before any code using tailwind generation.
+If documentation conflicts arise, Brave/Context7 MCP always wins.
+"""

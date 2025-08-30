@@ -20,23 +20,23 @@ gemini-custom-slash-commands/
 
 ## ⚡ Features
 
-- **/audit_accessibility** – Full WCAG 2.2 audit with semantic HTML, ARIA, keyboard navigation, screen reader support, and contrast checks. Produces a detailed analysis + actionable task list.  
-- **/audit_tailwind_v4** – Audit Tailwind v4 projects for best practices, deprecated v3 utilities, design consistency, and CSS layering. Uses Brave and Context7 MCPs for fact-checking. Produces a detailed analysis + actionable task list.
-- **/audit_angular** – Angular code audit based on Angular CLI MCP best practices: performance, modern patterns, and maintainability. Produces a detailed analysis + actionable task list.
-- **/guard_tailwind_v4** – Prevents hallucination of v3 patterns. Ensures all Tailwind v4 guidance is verified via official docs or trusted MCPs.
+- **/audit-accessibility** – Full WCAG 2.2 audit with semantic HTML, ARIA, keyboard navigation, screen reader support, and contrast checks. Produces a detailed analysis + actionable task list.  
+- **/audit-tailwind_v4** – Audit Tailwind v4 projects for best practices, deprecated v3 utilities, design consistency, and CSS layering. Uses Brave and Context7 MCPs for fact-checking. Produces a detailed analysis + actionable task list.
+- **/audit-angular** – Angular code audit based on Angular CLI MCP best practices: performance, modern patterns, and maintainability. Produces a detailed analysis + actionable task list.
+- **/guard-tailwind_v4** – Prevents hallucination of v3 patterns. Ensures all Tailwind v4 guidance is verified via official docs or trusted MCPs.
 - **/self-reflect** - Reflect on my VibeCoding journey logs (chat history), detect repeated patterns, and propose rules to improve. Produces a detailed analysis + actionable task list.
 ---
 
 ## 📌 How to Use
 
-1. Copy the `.toml` command files into your Gemini commands folder.  
-2. Open Gemini and reload commands (or restart Gemini).  
-3. Use the commands directly in the terminal or chat:  
+1. Copy the `.toml` command files into your `.gemini/commands` folder (if commands folder doesn't exist, create it).  
+2. Open Gemini and use command starting with `/` (for each change to these commands, you should restart Gemini).  
+3. Complete usage examples:  
    ```bash
-   /audit_accessibility
-   /audit_tailwind_v4
-   /audit_angular
-   /guard_tailwind_v4
+   /audit-accessibility --output ./audit-reports/accessibility-$(date +%F-%H%M).md
+   /audit-tailwind_v4 --output ./audit-reports/tailwind-v4-$(date +%F-%H%M).md
+   /audit-angular --output ./audit-reports/angular-$(date +%F-%H%M).md
+   /guard-tailwind_v4
 
 4. Reports are output in Markdown format, ready to save or integrate into project documentation.  
 

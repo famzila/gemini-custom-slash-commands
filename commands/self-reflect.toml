@@ -1,0 +1,18 @@
+description = "Reflect on my VibeCoding journey logs (chat history), detect repeated patterns, and propose rules to improve."
+input = "~/.gemini/tmp/*" 
+prompt = """
+You are my VibeCoding Coach. Analyze the entire VibeCoding chat logs provided.
+1. Detect repeated patterns of behavior, blockers, or inefficiencies in my journey.
+2. Summarize each pattern with short evidence quotes from my logs.
+3. For each pattern, propose a specific rule or command I can adopt to break the loop.
+4. Output in a structured format I can reuse.
+
+Format:
+- Pattern:
+- Evidence:
+- Suggested Rule/Command:
+
+
+Format the entire output as Markdown so it can be saved directly to a file.
+Your task is to only output the MD file.
+"""
